@@ -1,6 +1,7 @@
 from importlib import import_module
 
-module_names = ('elasticsearch', 'elasticsearch1', 'elasticsearch2', 'elasticsearch5', 'elasticsearch6')
+from ..elasticsearch import required_modules as module_names
+
 for module_name in module_names:
     try:
         elasticsearch = import_module(module_name)

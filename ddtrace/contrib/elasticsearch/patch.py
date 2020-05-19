@@ -4,6 +4,8 @@ from ddtrace.vendor.wrapt import wrap_function_wrapper as _w
 
 from .quantize import quantize
 
+from ..elasticsearch import required_modules as module_names
+
 from ...compat import urlencode
 from ...constants import ANALYTICS_SAMPLE_RATE_KEY, SPAN_MEASURED_KEY
 from ...ext import SpanTypes, elasticsearch as metadata, http
@@ -13,7 +15,6 @@ from ...settings import config
 
 
 def _es_modules():
-    module_names = ('elasticsearch', 'elasticsearch1', 'elasticsearch2', 'elasticsearch5', 'elasticsearch6')
     for module_name in module_names:
         try:
             yield import_module(module_name)
